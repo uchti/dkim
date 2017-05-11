@@ -25,7 +25,7 @@ func newRelaxedHeaderHash(hash hash.Hash) *relaxedHeaderHash {
 func (hh *relaxedHeaderHash) AddHeader(name, value string) {
 	hh.h.Write([]byte(strings.ToLower(name)))
 	hh.h.Write([]byte(":"))
-	hh.h.Write([]byte(value))
+	hh.h.Write([]byte(strings.Join(strings.Fields(value), " ")))
 	hh.h.Write([]byte("\r\n"))
 	hh.a = append(hh.a, name)
 }
